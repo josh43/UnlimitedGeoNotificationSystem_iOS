@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03E449521D0969B6009F5493 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449511D0969B6009F5493 /* main.m */; };
+		03E449551D0969B6009F5493 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449541D0969B6009F5493 /* AppDelegate.m */; };
+		03E449581D0969B6009F5493 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449571D0969B6009F5493 /* ViewController.m */; };
+		03E4495B1D0969B6009F5493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E449591D0969B6009F5493 /* Main.storyboard */; };
+		03E4495D1D0969B6009F5493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03E4495C1D0969B6009F5493 /* Assets.xcassets */; };
+		03E449601D0969B6009F5493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E4495E1D0969B6009F5493 /* LaunchScreen.storyboard */; };
+		03E4496B1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4496A1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m */; };
+		03E449761D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449751D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		03E449671D0969B6009F5493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03E449451D0969B6009F5493 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03E4494C1D0969B6009F5493;
+			remoteInfo = UnlimitedGeoNotificationSystem;
+		};
+		03E449721D0969B6009F5493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03E449451D0969B6009F5493 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03E4494C1D0969B6009F5493;
+			remoteInfo = UnlimitedGeoNotificationSystem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03E4494D1D0969B6009F5493 /* UnlimitedGeoNotificationSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnlimitedGeoNotificationSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03E449511D0969B6009F5493 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		03E449531D0969B6009F5493 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		03E449541D0969B6009F5493 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		03E449561D0969B6009F5493 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		03E449571D0969B6009F5493 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		03E4495A1D0969B6009F5493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		03E4495C1D0969B6009F5493 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03E4495F1D0969B6009F5493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		03E449611D0969B6009F5493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03E449661D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnlimitedGeoNotificationSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03E4496A1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnlimitedGeoNotificationSystemTests.m; sourceTree = "<group>"; };
+		03E4496C1D0969B6009F5493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03E449711D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnlimitedGeoNotificationSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03E449751D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnlimitedGeoNotificationSystemUITests.m; sourceTree = "<group>"; };
+		03E449771D0969B6009F5493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03E4494A1D0969B6009F5493 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03E449631D0969B6009F5493 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03E4496E1D0969B6009F5493 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03E449441D0969B6009F5493 = {
+			isa = PBXGroup;
+			children = (
+				03E4494F1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */,
+				03E449691D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests */,
+				03E449741D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests */,
+				03E4494E1D0969B6009F5493 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03E4494E1D0969B6009F5493 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03E4494D1D0969B6009F5493 /* UnlimitedGeoNotificationSystem.app */,
+				03E449661D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.xctest */,
+				03E449711D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03E4494F1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */ = {
+			isa = PBXGroup;
+			children = (
+				03E449531D0969B6009F5493 /* AppDelegate.h */,
+				03E449541D0969B6009F5493 /* AppDelegate.m */,
+				03E449561D0969B6009F5493 /* ViewController.h */,
+				03E449571D0969B6009F5493 /* ViewController.m */,
+				03E449591D0969B6009F5493 /* Main.storyboard */,
+				03E4495C1D0969B6009F5493 /* Assets.xcassets */,
+				03E4495E1D0969B6009F5493 /* LaunchScreen.storyboard */,
+				03E449611D0969B6009F5493 /* Info.plist */,
+				03E449501D0969B6009F5493 /* Supporting Files */,
+			);
+			path = UnlimitedGeoNotificationSystem;
+			sourceTree = "<group>";
+		};
+		03E449501D0969B6009F5493 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				03E449511D0969B6009F5493 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03E449691D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests */ = {
+			isa = PBXGroup;
+			children = (
+				03E4496A1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m */,
+				03E4496C1D0969B6009F5493 /* Info.plist */,
+			);
+			path = UnlimitedGeoNotificationSystemTests;
+			sourceTree = "<group>";
+		};
+		03E449741D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests */ = {
+			isa = PBXGroup;
+			children = (
+				03E449751D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m */,
+				03E449771D0969B6009F5493 /* Info.plist */,
+			);
+			path = UnlimitedGeoNotificationSystemUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03E4494C1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03E4497A1D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystem" */;
+			buildPhases = (
+				03E449491D0969B6009F5493 /* Sources */,
+				03E4494A1D0969B6009F5493 /* Frameworks */,
+				03E4494B1D0969B6009F5493 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnlimitedGeoNotificationSystem;
+			productName = UnlimitedGeoNotificationSystem;
+			productReference = 03E4494D1D0969B6009F5493 /* UnlimitedGeoNotificationSystem.app */;
+			productType = "com.apple.product-type.application";
+		};
+		03E449651D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03E4497D1D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystemTests" */;
+			buildPhases = (
+				03E449621D0969B6009F5493 /* Sources */,
+				03E449631D0969B6009F5493 /* Frameworks */,
+				03E449641D0969B6009F5493 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03E449681D0969B6009F5493 /* PBXTargetDependency */,
+			);
+			name = UnlimitedGeoNotificationSystemTests;
+			productName = UnlimitedGeoNotificationSystemTests;
+			productReference = 03E449661D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		03E449701D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03E449801D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystemUITests" */;
+			buildPhases = (
+				03E4496D1D0969B6009F5493 /* Sources */,
+				03E4496E1D0969B6009F5493 /* Frameworks */,
+				03E4496F1D0969B6009F5493 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03E449731D0969B6009F5493 /* PBXTargetDependency */,
+			);
+			name = UnlimitedGeoNotificationSystemUITests;
+			productName = UnlimitedGeoNotificationSystemUITests;
+			productReference = 03E449711D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03E449451D0969B6009F5493 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = joshua;
+				TargetAttributes = {
+					03E4494C1D0969B6009F5493 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					03E449651D0969B6009F5493 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 03E4494C1D0969B6009F5493;
+					};
+					03E449701D0969B6009F5493 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 03E4494C1D0969B6009F5493;
+					};
+				};
+			};
+			buildConfigurationList = 03E449481D0969B6009F5493 /* Build configuration list for PBXProject "UnlimitedGeoNotificationSystem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03E449441D0969B6009F5493;
+			productRefGroup = 03E4494E1D0969B6009F5493 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03E4494C1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */,
+				03E449651D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests */,
+				03E449701D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03E4494B1D0969B6009F5493 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03E449601D0969B6009F5493 /* LaunchScreen.storyboard in Resources */,
+				03E4495D1D0969B6009F5493 /* Assets.xcassets in Resources */,
+				03E4495B1D0969B6009F5493 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03E449641D0969B6009F5493 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03E4496F1D0969B6009F5493 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03E449491D0969B6009F5493 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03E449581D0969B6009F5493 /* ViewController.m in Sources */,
+				03E449551D0969B6009F5493 /* AppDelegate.m in Sources */,
+				03E449521D0969B6009F5493 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03E449621D0969B6009F5493 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03E4496B1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03E4496D1D0969B6009F5493 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03E449761D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03E449681D0969B6009F5493 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03E4494C1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */;
+			targetProxy = 03E449671D0969B6009F5493 /* PBXContainerItemProxy */;
+		};
+		03E449731D0969B6009F5493 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03E4494C1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */;
+			targetProxy = 03E449721D0969B6009F5493 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03E449591D0969B6009F5493 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03E4495A1D0969B6009F5493 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		03E4495E1D0969B6009F5493 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03E4495F1D0969B6009F5493 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03E449781D0969B6009F5493 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		03E449791D0969B6009F5493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03E4497B1D0969B6009F5493 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = UnlimitedGeoNotificationSystem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03E4497C1D0969B6009F5493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = UnlimitedGeoNotificationSystem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		03E4497E1D0969B6009F5493 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UnlimitedGeoNotificationSystemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnlimitedGeoNotificationSystem.app/UnlimitedGeoNotificationSystem";
+			};
+			name = Debug;
+		};
+		03E4497F1D0969B6009F5493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = UnlimitedGeoNotificationSystemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnlimitedGeoNotificationSystem.app/UnlimitedGeoNotificationSystem";
+			};
+			name = Release;
+		};
+		03E449811D0969B6009F5493 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UnlimitedGeoNotificationSystemUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystemUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = UnlimitedGeoNotificationSystem;
+			};
+			name = Debug;
+		};
+		03E449821D0969B6009F5493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UnlimitedGeoNotificationSystemUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystemUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = UnlimitedGeoNotificationSystem;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03E449481D0969B6009F5493 /* Build configuration list for PBXProject "UnlimitedGeoNotificationSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03E449781D0969B6009F5493 /* Debug */,
+				03E449791D0969B6009F5493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03E4497A1D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03E4497B1D0969B6009F5493 /* Debug */,
+				03E4497C1D0969B6009F5493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		03E4497D1D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03E4497E1D0969B6009F5493 /* Debug */,
+				03E4497F1D0969B6009F5493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		03E449801D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystemUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03E449811D0969B6009F5493 /* Debug */,
+				03E449821D0969B6009F5493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03E449451D0969B6009F5493 /* Project object */;
+}
