@@ -13,6 +13,13 @@
      Xcode will simulate a route visitng each waypoint.
      -->
     
+    
+    <!--
+     I tried to include the time to make it go faster but that didn't help mine at all, it might be because it wants actuall time and I used simulated time
+     aka today is jun 8 2016 3:00 but I used something like oct 5 2010 1:00
+     -->
+    
+    <!-- you wont be notified by these only the states! -->
     <wpt lat="37.3270145" lon="-122.0310273">
         <name>Apple</name>
     </wpt>
@@ -43,7 +50,6 @@
         <name>   San francisco
             
         </name>
-        <time>2010-01-01T00:00:00Z</time>
 
     </wpt>
     

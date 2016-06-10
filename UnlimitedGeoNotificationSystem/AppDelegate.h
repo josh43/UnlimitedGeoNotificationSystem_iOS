@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+@class MapViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong,nonatomic) CLLocationManager * locManager;
+- (bool) checkStatus:(CLAuthorizationStatus) status;
++(void) setCurrentMapViewController: (MapViewController *) mv;
 
 @end
 

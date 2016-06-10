@@ -12,19 +12,24 @@ struct DataPair{
 
 
 
-struct DataPair * parse(){
+struct DataPair * parse(const char * path){
     
     
-    // xcode and opening files just fucking sucks so bad
+    // xcode and opening files SUCKS
     // fuck
     // why
     
     
-    FILE * open = fopen("test.out","w");
-    fprintf(open,"WHERE IS THIS");
-    fclose(open);
-    FILE * longLatFile = fopen("/GPX/longitudes.txt","r");
-    FILE * stateFile = fopen("Users/josh/Documents/CS\x20Projects/UnlimitedGeoNotificationSystem/UnlimitedGeoNotificationSystem/GPX/states.txt","r");
+    printf("Path is %s\n",path);
+    char longFileName[256];
+    char statFileName[256];
+    char * last = stpcpy(longFileName,path);
+    strcpy(last,"/longitudes.txt");
+    char * stateLast = stpcpy(statFileName,path);
+    strcpy(stateLast,"/states.txt");
+    
+    FILE * longLatFile = fopen(longFileName,"r");
+    FILE * stateFile = fopen(statFileName,"r");
    //                         longitudes.txt
     if(longLatFile == NULL){printf("LongLat file was NULL\n");}
     if(stateFile == NULL){printf("stateFile file was NULL\n");}
@@ -34,7 +39,10 @@ struct DataPair * parse(){
     struct DataPair * toReturn = (struct DataPair *)malloc(sizeof(struct DataPair) * 52);
     int i = 0;
     while(i < 50){
+        
         fscanf(stateFile,"%s",toReturn[i].state);
+        // every even float in the longitudes file corresponseds to a latitude
+        // every odd one corresponds to a longitude
         fscanf(longLatFile,"%f",&toReturn[i].latitude);
         fscanf(longLatFile,"%f",&toReturn[i].longitude);
         i++;

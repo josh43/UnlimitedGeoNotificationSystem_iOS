@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032D10031D0AC2BA00057735 /* longitudes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 032D0FFF1D0AC2BA00057735 /* longitudes.txt */; };
+		032D10041D0AC2BA00057735 /* parser.h in Sources */ = {isa = PBXBuildFile; fileRef = 032D10001D0AC2BA00057735 /* parser.h */; };
+		032D10051D0AC2BA00057735 /* stateFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 032D10011D0AC2BA00057735 /* stateFile.txt */; };
+		032D10061D0AC2BA00057735 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = 032D10021D0AC2BA00057735 /* states.txt */; };
+		036456251D0A286C00D06D82 /* MapViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036456241D0A286C00D06D82 /* MapViewController.mm */; };
+		036456291D0A732200D06D82 /* CustomAnnotation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036456281D0A732200D06D82 /* CustomAnnotation.mm */; };
 		03E449521D0969B6009F5493 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449511D0969B6009F5493 /* main.m */; };
-		03E449551D0969B6009F5493 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449541D0969B6009F5493 /* AppDelegate.m */; };
-		03E449581D0969B6009F5493 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449571D0969B6009F5493 /* ViewController.m */; };
+		03E449551D0969B6009F5493 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03E449541D0969B6009F5493 /* AppDelegate.mm */; };
 		03E4495B1D0969B6009F5493 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E449591D0969B6009F5493 /* Main.storyboard */; };
 		03E4495D1D0969B6009F5493 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03E4495C1D0969B6009F5493 /* Assets.xcassets */; };
 		03E449601D0969B6009F5493 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E4495E1D0969B6009F5493 /* LaunchScreen.storyboard */; };
 		03E4496B1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E4496A1D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests.m */; };
 		03E449761D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E449751D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m */; };
+		03E449841D0969C7009F5493 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E449831D0969C7009F5493 /* MapKit.framework */; };
+		03E449861D0969CF009F5493 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E449851D0969CF009F5493 /* CoreLocation.framework */; };
+		03E449881D096B6C009F5493 /* QuadTree in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E449871D096B6C009F5493 /* QuadTree */; };
+		03E4498C1D096CC7009F5493 /* GeoFenceTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03E4498B1D096CC7009F5493 /* GeoFenceTracker.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +44,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		032D0FFF1D0AC2BA00057735 /* longitudes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = longitudes.txt; path = GPX/longitudes.txt; sourceTree = "<group>"; };
+		032D10001D0AC2BA00057735 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parser.h; path = GPX/parser.h; sourceTree = "<group>"; };
+		032D10011D0AC2BA00057735 /* stateFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = stateFile.txt; path = GPX/stateFile.txt; sourceTree = "<group>"; };
+		032D10021D0AC2BA00057735 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = states.txt; path = GPX/states.txt; sourceTree = "<group>"; };
+		036456231D0A286C00D06D82 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		036456241D0A286C00D06D82 /* MapViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapViewController.mm; sourceTree = "<group>"; };
+		036456271D0A732200D06D82 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		036456281D0A732200D06D82 /* CustomAnnotation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CustomAnnotation.mm; sourceTree = "<group>"; };
+		0364562A1D0A7CBA00D06D82 /* TestFences.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestFences.gpx; sourceTree = "<group>"; };
 		03E4494D1D0969B6009F5493 /* UnlimitedGeoNotificationSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnlimitedGeoNotificationSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E449511D0969B6009F5493 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03E449531D0969B6009F5493 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		03E449541D0969B6009F5493 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		03E449561D0969B6009F5493 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		03E449571D0969B6009F5493 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		03E449541D0969B6009F5493 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		03E4495A1D0969B6009F5493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03E4495C1D0969B6009F5493 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03E4495F1D0969B6009F5493 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +67,11 @@
 		03E449711D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnlimitedGeoNotificationSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E449751D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnlimitedGeoNotificationSystemUITests.m; sourceTree = "<group>"; };
 		03E449771D0969B6009F5493 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03E449831D0969C7009F5493 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		03E449851D0969CF009F5493 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		03E449871D096B6C009F5493 /* QuadTree */ = {isa = PBXFileReference; lastKnownFileType = folder; name = QuadTree; path = ../../../../../usr/local/lib/QuadTree; sourceTree = "<group>"; };
+		03E4498A1D096CC7009F5493 /* GeoFenceTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFenceTracker.h; sourceTree = "<group>"; };
+		03E4498B1D096CC7009F5493 /* GeoFenceTracker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeoFenceTracker.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E449881D096B6C009F5493 /* QuadTree in Frameworks */,
+				03E449861D0969CF009F5493 /* CoreLocation.framework in Frameworks */,
+				03E449841D0969C7009F5493 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +102,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		036456261D0A730900D06D82 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				036456231D0A286C00D06D82 /* MapViewController.h */,
+				036456241D0A286C00D06D82 /* MapViewController.mm */,
+				036456271D0A732200D06D82 /* CustomAnnotation.h */,
+				036456281D0A732200D06D82 /* CustomAnnotation.mm */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 		03E449441D0969B6009F5493 = {
 			isa = PBXGroup;
 			children = (
+				03E449871D096B6C009F5493 /* QuadTree */,
+				03E449851D0969CF009F5493 /* CoreLocation.framework */,
+				03E449831D0969C7009F5493 /* MapKit.framework */,
 				03E4494F1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */,
 				03E449691D0969B6009F5493 /* UnlimitedGeoNotificationSystemTests */,
 				03E449741D0969B6009F5493 /* UnlimitedGeoNotificationSystemUITests */,
@@ -101,10 +139,15 @@
 		03E4494F1D0969B6009F5493 /* UnlimitedGeoNotificationSystem */ = {
 			isa = PBXGroup;
 			children = (
+				032D0FFF1D0AC2BA00057735 /* longitudes.txt */,
+				032D10001D0AC2BA00057735 /* parser.h */,
+				032D10011D0AC2BA00057735 /* stateFile.txt */,
+				032D10021D0AC2BA00057735 /* states.txt */,
+				0364562A1D0A7CBA00D06D82 /* TestFences.gpx */,
+				036456261D0A730900D06D82 /* MapView */,
+				03E449891D096CA6009F5493 /* Model */,
 				03E449531D0969B6009F5493 /* AppDelegate.h */,
-				03E449541D0969B6009F5493 /* AppDelegate.m */,
-				03E449561D0969B6009F5493 /* ViewController.h */,
-				03E449571D0969B6009F5493 /* ViewController.m */,
+				03E449541D0969B6009F5493 /* AppDelegate.mm */,
 				03E449591D0969B6009F5493 /* Main.storyboard */,
 				03E4495C1D0969B6009F5493 /* Assets.xcassets */,
 				03E4495E1D0969B6009F5493 /* LaunchScreen.storyboard */,
@@ -138,6 +181,15 @@
 				03E449771D0969B6009F5493 /* Info.plist */,
 			);
 			path = UnlimitedGeoNotificationSystemUITests;
+			sourceTree = "<group>";
+		};
+		03E449891D096CA6009F5493 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03E4498A1D096CC7009F5493 /* GeoFenceTracker.h */,
+				03E4498B1D096CC7009F5493 /* GeoFenceTracker.mm */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +295,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				032D10051D0AC2BA00057735 /* stateFile.txt in Resources */,
 				03E449601D0969B6009F5493 /* LaunchScreen.storyboard in Resources */,
+				032D10061D0AC2BA00057735 /* states.txt in Resources */,
 				03E4495D1D0969B6009F5493 /* Assets.xcassets in Resources */,
 				03E4495B1D0969B6009F5493 /* Main.storyboard in Resources */,
+				032D10031D0AC2BA00057735 /* longitudes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +325,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E449581D0969B6009F5493 /* ViewController.m in Sources */,
-				03E449551D0969B6009F5493 /* AppDelegate.m in Sources */,
+				032D10041D0AC2BA00057735 /* parser.h in Sources */,
+				03E4498C1D096CC7009F5493 /* GeoFenceTracker.mm in Sources */,
+				036456251D0A286C00D06D82 /* MapViewController.mm in Sources */,
+				036456291D0A732200D06D82 /* CustomAnnotation.mm in Sources */,
+				03E449551D0969B6009F5493 /* AppDelegate.mm in Sources */,
 				03E449521D0969B6009F5493 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = /usr/local/lib/QuadTree/;
 				INFOPLIST_FILE = UnlimitedGeoNotificationSystem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystem;
@@ -424,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = /usr/local/lib/QuadTree/;
 				INFOPLIST_FILE = UnlimitedGeoNotificationSystem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JRMCorp.UnlimitedGeoNotificationSystem;
@@ -496,6 +556,7 @@
 				03E4497C1D0969B6009F5493 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03E4497D1D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystemTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +565,7 @@
 				03E4497F1D0969B6009F5493 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03E449801D0969B6009F5493 /* Build configuration list for PBXNativeTarget "UnlimitedGeoNotificationSystemUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +574,7 @@
 				03E449821D0969B6009F5493 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

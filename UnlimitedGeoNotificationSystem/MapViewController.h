@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "GeoFenceTracker.h"
+#import "CustomAnnotation.h"
+@interface MapViewController : UIViewController <MKMapViewDelegate>
+-(void) initializeStartRegion :(CLLocationCoordinate2D) center;
+-(void) updateRegion;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
-@interface MapViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *text;
 
 @end
