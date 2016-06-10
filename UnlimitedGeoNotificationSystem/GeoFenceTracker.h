@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import <Foundation/Foundation.h>
-#import <QuadTree.hpp>
+#import "QuadTree/QuadTree.hpp"
+
+//#import "QuadQuadTree.hpp"
 /*
  If you are including it from /usr/local/lib ...
  you need to add that to header search paths not the frameworks!

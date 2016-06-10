@@ -16,7 +16,6 @@ struct DataPair * parse(const char * path){
     
     
     // xcode and opening files SUCKS
-    // fuck
     // why
     
     

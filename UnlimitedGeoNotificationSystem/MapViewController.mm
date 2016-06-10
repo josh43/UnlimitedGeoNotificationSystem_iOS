@@ -4,7 +4,7 @@
 //
 //  Created by joshua on 6/9/16.
 //  Copyright © 2016 joshua. All rights reserved.
-//
+//  A simple mapview controller to display the demo!
 
 #import "MapViewController.h"
 #import "AppDelegate.h"
