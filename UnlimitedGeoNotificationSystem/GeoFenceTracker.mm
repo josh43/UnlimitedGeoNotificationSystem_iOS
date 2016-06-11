@@ -14,7 +14,7 @@
 @interface GeoFenceTracker(){
     Algo::QuadTree * qt;
     std::map<std::pair<Precision,Precision> ,std::string> pointMapping;
-    std::vector<CGPoint *> toFree;
+    std::vector<CGPoint *>  * toFree;
     unsigned int numPointsTracking;
 }@end
 CGRect dummy = CGRectMake(0, 0, 0, 0);
@@ -32,6 +32,7 @@ typedef Algo::QuadPoint<Precision> QPoint;
     
     // it auto static casted everything holla @ ya boi
     qt = new Algo::QuadTree({static_cast<Precision>(rect.origin.x),static_cast<Precision>(rect.origin.y),static_cast<Precision>(rect.size.width),static_cast<Precision>(rect.size.height)});
+    toFree = new std::vector<CGPoint *>();
     
     
     return self;
@@ -51,7 +52,7 @@ typedef Algo::QuadPoint<Precision> QPoint;
     return toReturn;
 }
 +(CGPoint) convertToMapSystem:(QPoint) q{
-    CGPoint toReturn = {q.x - 180.0f,q.y - 90.0f};
+    CGPoint toReturn = {q.x - 180.0,q.y - 90.0};
     return toReturn;
     
 }
@@ -69,27 +70,31 @@ typedef Algo::QuadPoint<Precision> QPoint;
     return store;
 }
 +(CGPoint *) getCurrentTrackedLocations{
-    CGPoint * toReturn = new CGPoint[[self getSingleton:dummy]->numPointsTracking+1];
+    // maybe call malloc instead
+    // root of erros was new
+    //new CGPoint[[GeoFenceTracker getSingleton:dummy]->numPointsTracking +1];
+    struct CGPoint * toReturn = (CGPoint *)malloc(sizeof(struct CGPoint) * ([GeoFenceTracker getSingleton:dummy]->numPointsTracking +1));
+    //
     // isnt c++ marvelous?!?!
     unsigned int i = 0;
     for(std::map<std::pair<Precision,Precision>,std::string>::iterator iter =
-        [self getSingleton:dummy]->pointMapping.begin(); iter !=  [self getSingleton:dummy]->pointMapping.end(); iter++ ){
+        [GeoFenceTracker getSingleton:dummy]->pointMapping.begin(); iter !=  [GeoFenceTracker getSingleton:dummy]->pointMapping.end(); iter++ ){
         QPoint point = {iter->first.first,iter->first.second};
-        CGPoint toAdd = [self convertToMapSystem:point];
+        CGPoint toAdd = [GeoFenceTracker convertToMapSystem:point];
         toReturn[i++] = toAdd;
     }
     
    
     // il manage zee memory
-    [self getSingleton:dummy]->toFree.push_back(toReturn);
+    //[GeoFenceTracker getSingleton:dummy]->toFree->push_back(toReturn);
     toReturn[i] = CGPointMake(SENTINEL, SENTINEL);
     return toReturn;
 }
 +(NSString *) getStringForKey:(float) longitude
                       withLat:(float) latitude{
     
-    if([self getSingleton:dummy]->pointMapping.find({longitude,latitude}) != [self getSingleton:dummy]->pointMapping.end()){
-        NSString * toReturn = [[NSString alloc] initWithUTF8String:[self getSingleton:dummy]->pointMapping[{longitude,latitude}].c_str()];
+    if([GeoFenceTracker getSingleton:dummy]->pointMapping.find({longitude,latitude}) != [GeoFenceTracker getSingleton:dummy]->pointMapping.end()){
+        NSString * toReturn = [[NSString alloc] initWithUTF8String:[GeoFenceTracker getSingleton:dummy]->pointMapping[{longitude,latitude}].c_str()];
         return toReturn;
     }else{
         return @"";
@@ -100,10 +105,10 @@ typedef Algo::QuadPoint<Precision> QPoint;
             withLatitude:(float)latitude
              withPayLoard:(NSString *)message{
     QPoint point = [self convertFromNegativeSystem:longitude withWhy:latitude];
-    [self getSingleton:CGRectMake(0,0,0,0)]->qt->insert(point);
+    [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->qt->insert(point);
     std::string value = std::string([message UTF8String]);
-    [self getSingleton:CGRectMake(0,0,0,0)]->pointMapping.insert({{point.x,point.y},value});
-    [self getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking++;
+    [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->pointMapping.insert({{point.x,point.y},value});
+    [GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking++;
 
     
 }
@@ -113,12 +118,154 @@ typedef Algo::QuadPoint<Precision> QPoint;
     
     QPoint point =  [self convertFromNegativeSystem:longitude withWhy:latitude];
 
-    [self getSingleton:CGRectMake(0,0,0,0)]->qt->remove(point);
-    [self getSingleton:CGRectMake(0,0,0,0)]->pointMapping.erase({point.x,point.y});
-    [self getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking--;
+    [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->qt->remove(point);
+    [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->pointMapping.erase({point.x,point.y});
+    [GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking--;
 
 }
++(void) loadFromFile{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    //make a file name to write the data to using the documents directory:
+    NSString *path= [NSString stringWithFormat:@"%@/geoStore.txt",
+                          documentsDirectory];
+    
+    FILE * toOpen = fopen([path UTF8String],"rb");
+    if(toOpen == NULL){
+        printf("Error writing to file :(\n");
+        return;
+    }
+    // else write
+    unsigned int sizeOfPair = sizeof(typeof(Precision)) *2;
+    unsigned int blockSize = 0;
+    unsigned int sizeOfString = 0;
+    // Format ([x][y][sizeofstring][string])*
+    // aka      [x][y][sizeofstring][string][x][y][sizeofstring][string]..... all your disk
+    // in bytes  4  4        4        any
+    
+    unsigned int numItems;
+    if(fread(&numItems, sizeof(unsigned int), 1, toOpen) == EOF){
+        printf("Error reading the file");
+        fclose(toOpen);
+        return;
+    }
+    // THERE IS GARBAGE IN THE STORAGE YOU NEED TO CHECK AHEAD OF TIME FOR DATA CORRUPTION!!
+    // fread does advance the file pointer
+    std::pair<Precision,Precision> point;
+    std::string str;
+    unsigned int strLen;
+    // error is between 8 9 and 10
+    for(int i = 0; i < numItems; i++){
+        
+        if(fread(&point.first,sizeof(Precision),1,toOpen) == EOF){printf("Error reading in a coordinate  for the file \n");fclose(toOpen);return;}
+        if(fread(&point.second,sizeof(Precision),1,toOpen) == EOF){printf("Error reading in a coordinate for the file \n");fclose(toOpen);return;}
+        if(fread(&strLen,sizeof(unsigned int),1,toOpen) == EOF){printf("Error reading in string length for the file \n");fclose(toOpen);return;}
+        char * buff  = (char *)malloc((strLen) * sizeof(char));
+        
+        
+        memset(buff,0,(strLen)*sizeof(char));
+        if(fread(buff,strLen,1,toOpen) == EOF){printf("Error reading in a string for the file \n");fclose(toOpen);return;}
+       
+        /*if(buff[strLen-1] != '\0'){
+            printf("buff[strlen] %c",buff[strLen]);
+            printf("COULD BE HUGE ERROR NON NULL TERMINATED\n");
+        }
+         
+        printf("Read %f %f %s\n",point.first,point.second,buff);
+       
+        // its reading the points back in reverse order why?? endieness?
+        */
+        
+       
+        if(strLen > 1){
+        
+            std::string toAdd = std::string(buff);
+            [GeoFenceTracker getSingleton:dummy]->pointMapping.insert(std::pair<std::pair<Precision,Precision>, std::string>({point.first,point.second},"HOLLA"));
+                //printf("After inserting the size is %d\n",[GeoFenceTracker getSingleton:dummy]->pointMapping.size());
+          
+            [GeoFenceTracker getSingleton:dummy]->qt->insert({point.first,point.second});
+            [GeoFenceTracker getSingleton:dummy]->numPointsTracking++;
+        }
+        free(buff);
+        
+    }
+    
+    // write how many their are
+    
+    fclose(toOpen);
+}
++(void) writeToFile{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains
+    (NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    //make a file name to write the data to using the documents directory:
+    NSString *fileName = [NSString stringWithFormat:@"%@/geoStore.txt",
+                          documentsDirectory];
+    
+    //create content - four lines of text
+   
+    // this is a check ^^^ to see what happens
+    
+    
+    // I am unable to open the file I am guessing I don't have write permissions
+    // And i found an apple doc within a minute saying I cannot write to AppName.app director makes sense!
+    // write to /Documents/
+    // BUT OF COURSE IT SOMEHOW DOESNT WORK
+    // nothing every just works on ios...
+  
+    FILE * toWrite = fopen([fileName UTF8String],"wb");
+    if(toWrite == NULL){
+        printf("Error writing to file :(\n");
+        perror("Checking write error\n");
+        return;
+    }
+    // else write
+    unsigned int sizeOfPair = sizeof(typeof(Precision)) *2;
+    unsigned int blockSize = 0;
+    unsigned int sizeOfString = 0;
+    // Format ([x][y][sizeofstring][string])*
+    // aka      [x][y][sizeofstring][string][x][y][sizeofstring][string]..... all your disk
+    // in bytes  4  4        4        any
+    
+    unsigned int numItems = (unsigned int)[GeoFenceTracker getSingleton:dummy]->pointMapping.size();
+    
+    // write how many their are.
+    fwrite(&numItems, sizeof(unsigned int), 1, toWrite);
 
+    
+     for(auto iter : [GeoFenceTracker getSingleton:dummy]->pointMapping){
+        // write the first and second
+         // it returns the value in bytes
+        sizeOfString = (unsigned int)iter.second.size() + 1;
+         // fwrite(void *, size_t size, size_t nitems (writes nitems objects each size bytes long), FILE)
+         
+         if(sizeOfString < 1){
+             // do nada
+             continue;
+         }
+          blockSize = sizeOfPair + sizeof(unsigned int) + sizeOfString;
+         char block[blockSize];
+         memset(block,0,sizeof(block));
+         printf("The size of block is %d\n",sizeof(block));
+         memcpy(block,&iter.first.first,sizeof(Precision));
+         memcpy(block+sizeof(Precision),&iter.first.second,sizeof(Precision));
+         memcpy(block + sizeOfPair,&sizeOfString,sizeof(unsigned int));
+         memcpy(block + sizeOfPair + sizeof(unsigned int),iter.second.c_str(),sizeOfString);
+         if(block[blockSize-1] != '\0'){
+             printf("Potentially huge error the null char wasnt read instead %c \n",block[blockSize]);
+         }
+         printf("Size of char is %d\n",sizeof(char));
+         printf("Inserting %f %f %d %s\n",iter.first.first,iter.first.second,blockSize,iter.second.c_str());
+         fwrite(block, blockSize, 1, toWrite);
+         
+    }
+    
+    fclose(toWrite);
+    
+}
 // this assumes you pass in the basic scrub rect
 +(void)printAllPointsIntersecting:(CGRect) rect{
     
@@ -130,20 +277,24 @@ typedef Algo::QuadPoint<Precision> QPoint;
 
     std::vector<QPoint> intersected;
     
-    
-    Algo::QuadQuery::query([self getSingleton:CGRectMake(0, 0, 0, 0)]->qt, theRec, intersected);
-    printf("\nTracking %d points \n",[self getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking);
+    Algo::QuadQuery::query([GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->qt, theRec, intersected);
+    printf("\nTracking %d points \n",[GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking);
     for(int i = 0; i < intersected.size();i ++){
-        std::string toPrint = [self getSingleton:CGRectMake(0, 0, 0, 0)]->pointMapping.at({intersected[i].x,intersected[i].y});
+        std::string toPrint = [GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->pointMapping.at({intersected[i].x,intersected[i].y});
         printf("We intersected location x(%f) y(%f) with payload %s\n",intersected[i].x,intersected[i].y,toPrint.c_str());
     }
 }
+/*
 -(void)dealloc{
     //[super dealloc];
-    for(CGPoint * freeMe : toFree){
+    for(CGPoint * freeMe : *toFree){
         delete freeMe;
     }
+    
+    delete toFree;
     delete qt;
 }
-
+*/
 @end
+
+

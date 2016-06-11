@@ -50,11 +50,13 @@
                 break;
             }else{
                 // it expects latitude then longitude
+               
                 CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(toAdd.y, toAdd.x);
                 MKCircle * circ = [MKCircle circleWithCenterCoordinate:coord radius:10];
                 CustomAnnotation * ann = [[CustomAnnotation alloc] initWithLocation:coord];
                 [_mapView addOverlay:circ];
                 [_mapView addAnnotation:ann];
+               
             }
         }
     }

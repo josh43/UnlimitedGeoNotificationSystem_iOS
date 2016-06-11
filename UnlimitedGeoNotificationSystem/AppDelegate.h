@@ -10,6 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 @class MapViewController;
+/*
+  actuallu useful command  in lldb 
+ 
+ thread backtrace shows backtracks
+ */
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>
 

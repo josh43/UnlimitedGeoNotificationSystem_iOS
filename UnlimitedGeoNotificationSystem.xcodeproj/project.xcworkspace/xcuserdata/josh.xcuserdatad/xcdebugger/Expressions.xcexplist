@@ -3,6 +3,40 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "GLOBAL">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self getSingleton:dummy]-&gt;pointMapping">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[GeoFenceTracker writeToFile]:GeoFenceTracker.mm">
+      </ContextState>
+      <ContextState
+         contextName = "+[GeoFenceTracker writeToFile:]:GeoFenceTracker.mm">
+      </ContextState>
+      <ContextState
+         contextName = "+[GeoFenceTracker insertNotification:withLatitude:withPayLoard:]:GeoFenceTracker.mm">
+      </ContextState>
+      <ContextState
+         contextName = "+[GeoFenceTracker getCurrentTrackedLocations]:GeoFenceTracker.mm">
+      </ContextState>
+      <ContextState
+         contextName = "-[MapViewController updateRegion]:MapViewController.mm">
+      </ContextState>
+      <ContextState
+         contextName = "-[AppDelegate addTestPoints]:AppDelegate.mm">
+      </ContextState>
+      <ContextState
+         contextName = "+[GeoFenceTracker loadFromFile]:GeoFenceTracker.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "&amp;([GeoFenceTracker getSingleton:dummy]-&gt;pointMapping)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[AppDelegate locationManager:didUpdateLocations:]:AppDelegate.mm">
          <PersistentStrings>
             <PersistentString

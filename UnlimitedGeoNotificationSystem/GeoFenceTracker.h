@@ -33,6 +33,8 @@
 +(CGPoint *) getCurrentTrackedLocations;
 +(NSString *) getStringForKey:(float) longitude
                       withLat:(float) latitude;
++(void) writeToFile;
++(void) loadFromFile;
 
 -(void)dealloc;
 @end

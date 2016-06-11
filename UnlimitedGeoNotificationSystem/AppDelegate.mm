@@ -45,8 +45,11 @@ bool haveInitializedMap = false;
 
     quadRect =  CGRectMake(0,0, 360, 180);
     // initialize geofence
+    // cal this first!!
     [GeoFenceTracker getSingleton:quadRect];
     
+  
+    [GeoFenceTracker loadFromFile];
     self.locManager = [[CLLocationManager alloc]init];
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if(![self checkStatus:status]){
@@ -61,7 +64,7 @@ bool haveInitializedMap = false;
     
     
     
-    [self addTestPoints];
+   //[self addTestPoints];
     return YES;
 }
 
@@ -70,11 +73,11 @@ bool haveInitializedMap = false;
    struct DataPair * pairs = parse([path UTF8String]);
     for(int i = 0; i < 51 ; i++){
         // painful
-        [GeoFenceTracker insertNotification:pairs[i].longitude withLatitude:pairs[i].latitude withPayLoard:[NSString stringWithUTF8String:pairs[i].state]];
+        //[GeoFenceTracker insertNotification:pairs[i].longitude withLatitude:pairs[i].latitude withPayLoard:[NSString stringWithUTF8String:pairs[i].state]];
         
     }
     free(pairs);
-    [GeoFenceTracker insertNotification:myLocationLong withLatitude:myLocationLat withPayLoard:@"Heyyyy brother"];
+   // [GeoFenceTracker insertNotification:myLocationLong withLatitude:myLocationLat withPayLoard:@"Heyyyy brother"];
 }
 - (bool) checkStatus:(CLAuthorizationStatus) status{
     switch (status) {
@@ -173,6 +176,8 @@ bool haveInitializedMap = false;
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [GeoFenceTracker writeToFile];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -184,6 +189,14 @@ bool haveInitializedMap = false;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    
+    //make a file name to write the data to using the documents directory:
+    
+    
+   // NSString * dataLocator = [[NSBundle mainBundle] resourcePath];
+   // NSString * finalPath = [NSString stringWithFormat:@"%@/Documents/geoData.store",dataLocator];
+    [GeoFenceTracker writeToFile];
+
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

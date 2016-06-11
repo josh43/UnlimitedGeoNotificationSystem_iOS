@@ -39,6 +39,7 @@ struct DataPair * parse(const char * path){
     int i = 0;
     while(i < 50){
         
+        memset(toReturn[i].state,0,sizeof(char) * 64);
         fscanf(stateFile,"%s",toReturn[i].state);
         // every even float in the longitudes file corresponseds to a latitude
         // every odd one corresponds to a longitude
