@@ -107,7 +107,15 @@ typedef Algo::QuadPoint<Precision> QPoint;
     QPoint point = [self convertFromNegativeSystem:longitude withWhy:latitude];
     [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->qt->insert(point);
     std::string value = std::string([message UTF8String]);
-    [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->pointMapping.insert({{point.x,point.y},value});
+    // stl + objective c = worst possible code on the planet
+    if([GeoFenceTracker getSingleton:dummy]->pointMapping.find({point.x,point.y}) != [GeoFenceTracker getSingleton:dummy]->pointMapping.end()){
+        //add to it
+        value = [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->pointMapping[{point.x,point.y}];
+         value += std::string([message UTF8String]);
+        [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->pointMapping[{point.x,point.y}] = value;
+    }else{
+        [GeoFenceTracker getSingleton:CGRectMake(0,0,0,0)]->pointMapping.insert({{point.x,point.y},value});
+    }
     [GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking++;
 
     

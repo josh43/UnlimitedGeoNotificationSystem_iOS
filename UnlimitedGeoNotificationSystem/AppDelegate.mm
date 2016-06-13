@@ -30,10 +30,7 @@ float meterInDegrees = 0.00000904;
 // if you want improved accuracy try improving the precision of the quad tree
 // and most importantly you need to improve the precision of the degrees to meters
 float searchDistance = 25 * meterInDegrees;
-float myLocationLat = 37.643403200981;
-//                    37.643480105360638
-float myLocationLong = -121.816427986;
-//                    -121.8164225110056
+
 
 MapViewController * mapVC = NULL;
 bool haveInitializedMap = false;
@@ -89,12 +86,14 @@ bool haveInitializedMap = false;
 }
 
 -(void) addTestPoints{
+      /*
     NSString *path = [[NSBundle mainBundle] resourcePath];
-    /*
+    [GeoFenceTracker insertNotification:-122.099444 withLatitude:37.409197 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to a copy notification of monta loma park"]];
+
+  
     [GeoFenceTracker insertNotification:-122.0310273 withLatitude:37.3270145 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to apple"]];
     [GeoFenceTracker insertNotification:-122.084058 withLatitude:37.422 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to google"]];
     [GeoFenceTracker insertNotification:-122.099444 withLatitude:37.409197 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to monta loma park"]];
-    [GeoFenceTracker insertNotification:-122.099444 withLatitude:37.409197 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to a copy notification of monta loma park"]];
     [GeoFenceTracker insertNotification:-121.973648 withLatitude:37.402619 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to levi stadium"]];
     [GeoFenceTracker insertNotification:-121.886101 withLatitude:37.333041 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to San jose convention center"]];
 
