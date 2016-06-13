@@ -182,7 +182,7 @@ typedef Algo::QuadPoint<Precision> QPoint;
         if(strLen > 1){
         
             std::string toAdd = std::string(buff);
-            [GeoFenceTracker getSingleton:dummy]->pointMapping.insert(std::pair<std::pair<Precision,Precision>, std::string>({point.first,point.second},"HOLLA"));
+            [GeoFenceTracker getSingleton:dummy]->pointMapping.insert(std::pair<std::pair<Precision,Precision>, std::string>({point.first,point.second},toAdd.c_str()));
                 //printf("After inserting the size is %d\n",[GeoFenceTracker getSingleton:dummy]->pointMapping.size());
           
             [GeoFenceTracker getSingleton:dummy]->qt->insert({point.first,point.second});
@@ -280,9 +280,32 @@ typedef Algo::QuadPoint<Precision> QPoint;
     Algo::QuadQuery::query([GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->qt, theRec, intersected);
     printf("\nTracking %d points \n",[GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking);
     for(int i = 0; i < intersected.size();i ++){
+        CGPoint p =[self convertToMapSystem:intersected[i]];
+       
         std::string toPrint = [GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->pointMapping.at({intersected[i].x,intersected[i].y});
-        printf("We intersected location x(%f) y(%f) with payload %s\n",intersected[i].x,intersected[i].y,toPrint.c_str());
+        /* IN ORDER FOR IT TO MAKE SENSE YOU NEED TO CONVER COORDINATES BACK
+         */
+        
+        printf("We intersected location x(%f) y(%f) with payload %s\n",p.x,p.y,toPrint.c_str());
     }
+}
++(NSMutableArray *) getNotifications:(CGRect) rect{
+    Algo::Rect theRec = [self convertFromNegativeSystem:rect];
+    theRec.upperLeft.x -= theRec.width/2;
+    theRec.upperLeft.y -= theRec.height/2;
+    
+    std::vector<QPoint> intersected;
+    NSMutableArray * toReturn = [[NSMutableArray alloc]init];
+    Algo::QuadQuery::query([GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->qt, theRec, intersected);
+    //printf("\nTracking %d points \n",[GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->numPointsTracking);
+    for(int i = 0; i < intersected.size();i ++){
+        std::string toAdd = [GeoFenceTracker getSingleton:CGRectMake(0, 0, 0, 0)]->pointMapping.at({intersected[i].x,intersected[i].y});
+       // printf("We intersected location x(%f) y(%f) with payload %s\n",intersected[i].x,intersected[i].y,toPrint.c_str());
+        [toReturn addObject:[NSString stringWithUTF8String:toAdd.c_str()]];
+         
+    }
+         
+        return toReturn;
 }
 /*
 -(void)dealloc{

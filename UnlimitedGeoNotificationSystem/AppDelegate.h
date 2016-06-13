@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong,nonatomic) CLLocationManager * locManager;
+@property BOOL  isBackgroundMode;
 - (bool) checkStatus:(CLAuthorizationStatus) status;
 +(void) setCurrentMapViewController: (MapViewController *) mv;
 

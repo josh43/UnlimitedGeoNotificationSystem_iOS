@@ -35,6 +35,6 @@
                       withLat:(float) latitude;
 +(void) writeToFile;
 +(void) loadFromFile;
-
++(NSMutableArray *) getNotifications:(CGRect) rect;
 -(void)dealloc;
 @end

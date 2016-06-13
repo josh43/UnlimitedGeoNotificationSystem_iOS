@@ -49,28 +49,58 @@ bool haveInitializedMap = false;
     [GeoFenceTracker getSingleton:quadRect];
     
   
+    [self canCheckFromBackground];
     [GeoFenceTracker loadFromFile];
     self.locManager = [[CLLocationManager alloc]init];
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    // 20 meters 29 seconds
+    
     if(![self checkStatus:status]){
         // wait a second to let user update and then check again
     }
     
+    // SETUP NOTIFICATIONS
+    UIUserNotificationType types = (UIUserNotificationType) (UIUserNotificationTypeBadge |
+                                                             UIUserNotificationTypeSound | UIUserNotificationTypeAlert);
+    
+    
+    
+    //runTest();
+    
+    UIUserNotificationSettings *mySettings =
+    [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+   
+    // END SETTING UP NOTIFICATIONS
     self.locManager.delegate = self;
     self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locManager requestAlwaysAuthorization];
+    _locManager.allowsBackgroundLocationUpdates = YES;
 
     [self.locManager startUpdatingLocation];
+    [self.locManager allowDeferredLocationUpdatesUntilTraveled:20 timeout:20];
+
     
     
-    
-   //[self addTestPoints];
+   [self addTestPoints];
     return YES;
 }
 
 -(void) addTestPoints{
     NSString *path = [[NSBundle mainBundle] resourcePath];
-   struct DataPair * pairs = parse([path UTF8String]);
+    /*
+    [GeoFenceTracker insertNotification:-122.0310273 withLatitude:37.3270145 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to apple"]];
+    [GeoFenceTracker insertNotification:-122.084058 withLatitude:37.422 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to google"]];
+    [GeoFenceTracker insertNotification:-122.099444 withLatitude:37.409197 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to monta loma park"]];
+    [GeoFenceTracker insertNotification:-122.099444 withLatitude:37.409197 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to a copy notification of monta loma park"]];
+    [GeoFenceTracker insertNotification:-121.973648 withLatitude:37.402619 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to levi stadium"]];
+    [GeoFenceTracker insertNotification:-121.886101 withLatitude:37.333041 withPayLoard:[NSString stringWithFormat:@"%@",@"Welcome to San jose convention center"]];
+
+    
+    struct DataPair * pairs = parse([path UTF8String]);
+    
     for(int i = 0; i < 51 ; i++){
         // painful
         //[GeoFenceTracker insertNotification:pairs[i].longitude withLatitude:pairs[i].latitude withPayLoard:[NSString stringWithUTF8String:pairs[i].state]];
@@ -78,6 +108,7 @@ bool haveInitializedMap = false;
     }
     free(pairs);
    // [GeoFenceTracker insertNotification:myLocationLong withLatitude:myLocationLat withPayLoard:@"Heyyyy brother"];
+     */
 }
 - (bool) checkStatus:(CLAuthorizationStatus) status{
     switch (status) {
@@ -102,18 +133,24 @@ bool haveInitializedMap = false;
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power.
-    
+   // if (_isBackgroundMode)
+    //{
+    //   [manager allowDeferredLocationUpdatesUntilTraveled:CLLocationDistanceMax timeout:10];
+   // }else{
    
     CLLocation* location = [locations lastObject];
     NSDate* eventDate = location.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-   
+
     if (abs(howRecent) < 15.0) {
       
         // this will have the midpoint be at the current location
         // remember that my rect starts at the upper left corner not the midpoint of the rect
         [GeoFenceTracker printAllPointsIntersecting:CGRectMake(location.coordinate.longitude, location.coordinate.latitude, searchDistance, searchDistance)];
-      
+        NSMutableArray * notifications = [GeoFenceTracker getNotifications:CGRectMake(location.coordinate.longitude, location.coordinate.latitude, searchDistance, searchDistance)];
+        for(NSString * str in notifications){
+            [self notification:@"Notifications" withMessage:str];
+        }
         
        
     }
@@ -127,6 +164,7 @@ bool haveInitializedMap = false;
         
         [mapVC updateRegion];
     }
+   // }
 }
 
 // got this from http://nevan.net/2014/09/core-location-manager-changes-in-ios-8/
@@ -168,9 +206,75 @@ bool haveInitializedMap = false;
         [[UIApplication sharedApplication] openURL:settingsURL];
     }
 }
+-(void) notification:(NSString *) title
+         withMessage:(NSString *) mes{
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif == nil)
+        return;
+    localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.alertBody = mes;
+    localNotif.alertAction = NSLocalizedString(@"View Details", nil);
+    localNotif.alertTitle = title;
+    
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    //localNotif.applicationIconBadgeNumber = 1;
+  
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+
+}
+// http://www.creativeworkline.com/2014/12/core-location-manager-ios-8-fetching-location-background/
+-(void) canCheckFromBackground{
+    UIAlertView * alert;
+    
+    //We have to make sure that the Background app Refresh is enabled for the Location updates to work in the background.
+    if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied)
+    {
+        
+        // The user explicitly disabled the background services for this app or for the whole system.
+        
+        alert = [[UIAlertView alloc]initWithTitle:@""
+                                          message:@"The app doesn't work without the Background app Refresh enabled. To turn it on, go to Settings > General > Background app Refresh"
+                                         delegate:nil
+                                cancelButtonTitle:@"Ok"
+                                otherButtonTitles:nil, nil];
+        [alert show];
+        
+    } else if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusRestricted)
+    {
+        
+        // Background services are disabled and the user cannot turn them on.
+        // May occur when the device is restricted under parental control.
+        alert = [[UIAlertView alloc]initWithTitle:@""
+                                          message:@"The functions of this app are limited because the Background app Refresh is disable."
+                                         delegate:nil
+                                cancelButtonTitle:@"Ok"
+                                otherButtonTitles:nil, nil];
+        [alert show];
+        
+    } else
+    {
+        
+        // Background service is enabled, you can start the background supported location updates process
+    }
+    
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    
+    _isBackgroundMode = YES;
+    
+    [_locManager stopUpdatingLocation];
+    [_locManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locManager setDistanceFilter:kCLDistanceFilterNone];
+    _locManager.pausesLocationUpdatesAutomatically = NO;
+    _locManager.activityType = CLActivityTypeAutomotiveNavigation;
+    [_locManager startUpdatingLocation];
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
